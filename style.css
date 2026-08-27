@@ -1316,18 +1316,17 @@ button {
     position: fixed;
     top: var(--header-height);
     left: 0;
-    right: 0;
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - var(--header-height));
     background-color: #FFFFFF;
     z-index: var(--z-header);
-    transform: translateX(100%);
+    transform: translateX(100%); /* Keeps menu hidden off-screen by default */
     transition: transform 0.3s ease-in-out;
     overflow-y: auto;
     display: block;
   }
   .main-nav.is-open {
-    transform: translateX(0);
+    transform: translateX(0); /* Slides menu in ONLY when hamburger is clicked */
   }
   .main-nav .nav-links {
     display: flex;

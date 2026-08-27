@@ -102,16 +102,24 @@ document.addEventListener('keydown', function (e) {
   var mainNav = document.getElementById('main-nav');
 
   function closeMobileMenu() {
-    mainNav.classList.remove('is-open');
-    hamburgerBtn.classList.remove('is-open');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-  }
+if (!mainNav || !hamburgerBtn) return;
+mainNav.classList.remove('is-open');
+hamburgerBtn.classList.remove('is-open');
+hamburgerBtn.setAttribute('aria-expanded', 'false');
+unlockScroll();
+}
+function toggleMobileMenu() {
+if (!mainNav || !hamburgerBtn) return;
+var isOpen = mainNav.classList.toggle('is-open');
+hamburgerBtn.classList.toggle('is-open', isOpen);
+hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+if (isOpen) {
+  lockScroll();
+} else {
+  unlockScroll();
+}
+}
 
-  function toggleMobileMenu() {
-    var isOpen = mainNav.classList.toggle('is-open');
-    hamburgerBtn.classList.toggle('is-open', isOpen);
-    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }
 
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', toggleMobileMenu);
@@ -275,7 +283,7 @@ document.addEventListener('keydown', function (e) {
   var formSubmitBtn = document.getElementById('form-submit-btn');
   var formStatusMessage = document.getElementById('form-status-message');
 
-  var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
   var PHONE_REGEX = /^[6-9][0-9]{9}$/;
 
   function validateEmail() {
