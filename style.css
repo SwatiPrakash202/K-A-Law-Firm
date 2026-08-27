@@ -1310,25 +1310,39 @@ button {
   :root {
     --header-height: 84px;
   }
-  .hero-title {
-      font-size: 1.8rem; /* Adjust font size so it fits on one line */
-      white-space: nowrap;
-    }
-  /* Prevent brand name from breaking across multiple lines */
-  .brand-title, 
-  .hero-title, 
-  .site-title {
-    white-space: nowrap;
-  }
-/* Global guard against horizontal overflow */
+
+  /* Global guard against horizontal overflow */
   *, *::before, *::after {
-    max-width: 100vw;
     box-sizing: border-box;
   }
+
   .section {
     padding: 64px 0;
   }
-}
+
+  .hero-title {
+    font-size: 1.8rem;
+    white-space: nowrap;
+  }
+
+  .brand-title, 
+  .site-title {
+    white-space: nowrap;
+  }
+
+  /* Fix for Contact Us text truncation */
+  .contact-form-wrapper {
+    padding: 20px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-details-list li {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+  }
+
   .main-nav {
     position: fixed;
     top: var(--header-height);
@@ -1345,9 +1359,11 @@ button {
     overflow-x: hidden;
     display: block;
   }
+
   .main-nav.is-open {
-    transform: translateX(0); /* Slides menu in ONLY when hamburger is clicked */
+    transform: translateX(0);
   }
+
   .main-nav .nav-links {
     display: flex;
     flex-direction: column;
@@ -1356,6 +1372,7 @@ button {
     padding: 24px;
     width: 100%;
   }
+
   .nav-link {
     display: block;
     width: 100%;
@@ -1364,30 +1381,36 @@ button {
     color: #0A2540;
     border-bottom: 1px solid var(--color-border);
   }
+
   .hamburger-btn {
     display: flex;
   }
+
   .person-image-wrapper {
-  aspect-ratio: auto;
-  max-height: 380px;
-}
-.person-image {
-  width: 100%;
-  height: auto;
-  max-height: 380px;
-  object-fit: contain;
-  object-position: top center;
-}
+    aspect-ratio: auto;
+    max-height: 380px;
+  }
+
+  .person-image {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain;
+    object-position: top center;
+  }
+
   .hero-content {
     padding: 32px 20px;
   }
+
   .modal-box {
     padding: 24px;
   }
+
   .bar-council-box {
     padding: 26px 22px;
   }
-  /* Added for mobile about grid spacing */
+
   .about-grid {
     grid-template-columns: 1fr;
     gap: 28px;
